@@ -1,6 +1,6 @@
 Gerenciador de Tarefas Simples
 
-[Java Logo](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg)
+![Java Logo](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg)
 
 Este projeto é um **Gerenciador de Tarefas Simples** desenvolvido em Java, com o objetivo de organizar tarefas e demonstrar habilidades em programação orientada a objetos, concorrência e boas práticas de desenvolvimento. Ele foi pensado para ser funcional, modular e extensível, oferecendo uma base sólida para o gerenciamento de tarefas via console.
 
