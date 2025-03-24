@@ -38,17 +38,19 @@ Este projeto é um **Gerenciador de Tarefas Simples** desenvolvido em Java, com 
 
 ## Estrutura do Projeto
 
+```
 src/
-├── Main.java                // Ponto de entrada do programa
-├── Task.java                // Classe base para representação de tarefas
-├── WorkTask.java            // Classe derivada (opcional)
-├── TaskManager.java         // Classe para operações de tarefas (CRUD)
-├── AutoSaveThread.java      // Classe para salvamento automático
-├── enums/                   // Pacote para enums
-│   ├── TaskStatus.java      // Enum de status das tarefas
-│   └── PriorityLevel.java   // Enum de níveis de prioridade
+├── Main.java              // Ponto de entrada do programa
+├── Task.java              // Classe base para representação de tarefas
+├── WorkTask.java          // Classe derivada (opcional)
+├── TaskManager.java       // Classe para operações de tarefas (CRUD)
+├── AutoSaveThread.java    // Classe para salvamento automático
+├── enums/                 // Pacote para enums
+│   ├── TaskStatus.java    // Enum de status das tarefas
+│   └── PriorityLevel.java // Enum de níveis de prioridade
 data/
-└── tasks.txt                // Arquivo para persistência das tarefas
+└── tasks.txt              // Arquivo para persistência das tarefas
+```
 
 ## Como Rodar o Projeto
 
