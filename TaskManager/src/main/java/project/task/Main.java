@@ -8,6 +8,10 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		boolean running = true;
 		
+		 AutoSave autoSave = new AutoSave(taskManager);
+	     Thread autoSaveThread = new Thread(autoSave);
+	     autoSaveThread.start();
+		
 		while(running) {
 			System.out.println("1. Criar nova tarefa");
 			System.out.println("2. Listar tarefas");

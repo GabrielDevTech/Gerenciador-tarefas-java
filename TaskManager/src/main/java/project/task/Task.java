@@ -1,5 +1,7 @@
 package project.task;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Task {
 
@@ -73,7 +75,52 @@ public class Task {
 	public void setDueDate(LocalDateTime dueDate) {
 		this.dueDate = dueDate;
 	}
-	 
+	
+	public String toCsvString() {
+        return id + ";" +
+               title + ";" +
+               description + ";" +
+               createdAt + ";" +
+               updatedAt + ";" +
+               dueDate;
+    }
+	
+	public void fromCsvString(String csvString) {
+	    
+	    String[] fields = csvString.split(";");
+
+	    
+	    if (fields.length != 6) {
+	        throw new IllegalArgumentException("O formato da string CSV é inválido.");
+	    }
+
+	    
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+	    
+	    this.id = Integer.parseInt(fields[0]);
+	    this.title = fields[1];
+	    this.description = fields[2];
+
+	    // Valida e converte as datas
+	    this.createdAt = validateAndParseDate(fields[3]);
+	    this.updatedAt = validateAndParseDate(fields[4]);
+	    this.dueDate = validateAndParseDate(fields[5]);
+	}
+
+	
+	private LocalDateTime validateAndParseDate(String dateStr) {
+	    try {
+	        if (dateStr != null && !dateStr.isBlank()) {  
+	            return LocalDateTime.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	        }
+	    } catch (DateTimeParseException e) {
+	        System.err.println("Data inválida: " + dateStr);
+	    }
+	    
+	    return LocalDateTime.of(1, 1, 1, 0, 0); // Retorna a data mínima padrão
+	}
+
 	  
 	
 }

@@ -1,4 +1,9 @@
 package project.task;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -6,13 +11,66 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class TaskManager {
 
-	ArrayList<Task> listTask;
-	int idCounter = 0;
+	private ArrayList<Task> listTask;
+	private int idCounter;
 	
 	public TaskManager() {
 		listTask = new ArrayList<Task>();
+		File file = new File("tasks.txt");
+		 try {
+	            if (file.exists()) {
+	                // Se o arquivo existe, leia as tarefas
+	                initializeTasks(file);
+	            } else {
+	                // Se o arquivo não existe, cria um novo
+	                file.createNewFile();
+	                System.out.println("Arquivo 'tasks.txt' criado com sucesso.");
+	            }
+	        } catch (IOException e) {
+	            System.err.println("Erro ao lidar com o arquivo: " + e.getMessage());
+	        }
 	}
 	
+	public void initializeTasks(File file) {
+		try(BufferedReader reader = new BufferedReader(new FileReader(file))){
+			String firstLine = reader.readLine();
+			if((firstLine) != null){
+				this.idCounter = Integer.parseInt(firstLine);
+			}else {
+				int idCounter = 4;
+			}
+				
+			String line;
+			while((line = reader.readLine()) !=null) {
+				Task task = new Task();
+				if(!line.equals(null)) {
+					task.fromCsvString(line);
+					listTask.add(task);
+				}
+			}
+		}catch (IOException e){
+			System.err.println("Erro ao ler o arquivo de tarefas: " + e.getMessage());
+		}
+	}
+	
+	public ArrayList<Task> getListTask() {
+		return listTask;
+	}
+
+	public int getIdCounter() {
+		return idCounter;
+	}
+
+	public void setIdCounter(int idCounter) {
+		this.idCounter = idCounter;
+	}
+
+	public void setListTask(ArrayList<Task> listTask) {
+		this.listTask = listTask;
+	}
+
+
+
 	public void CreateTask(Scanner s) {
 		Task task;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -75,6 +133,7 @@ public class TaskManager {
 				case 1:
 					System.out.println("Digite o novo titulo:");
 					task.setTitle(s.next());
+					task.setUpdatedAt();
 					break;
 				case 2:
 					System.out.println("Digite a nova descrição:");
