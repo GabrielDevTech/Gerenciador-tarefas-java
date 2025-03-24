@@ -36,7 +36,6 @@ public class AutoSave implements Runnable {
         	for (Task task : tasks) {
                 writer.write(task.toCsvString());
                 writer.newLine();
-            System.out.println("dfgdfgdfg");
             }
             //System.out.println("Lista salva com sucesso!");
         } catch (IOException e) {
