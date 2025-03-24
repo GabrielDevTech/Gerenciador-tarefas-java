@@ -29,7 +29,7 @@ public class AutoSave implements Runnable {
 	
 	
 	private void saveTasksToFile() {
-        List<Task> tasks = taskManager.getListTask(); // Supondo que TaskManager tenha um método getTasks()
+        List<Task> tasks = taskManager.getListTask();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("tasks.txt"))) {
         	writer.write(String.valueOf(taskManager.getIdCounter()));
         	writer.newLine();

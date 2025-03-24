@@ -102,7 +102,7 @@ public class Task {
 	    this.title = fields[1];
 	    this.description = fields[2];
 
-	    // Valida e converte as datas
+	   
 	    this.createdAt = validateAndParseDate(fields[3]);
 	    this.updatedAt = validateAndParseDate(fields[4]);
 	    this.dueDate = validateAndParseDate(fields[5]);
@@ -118,7 +118,7 @@ public class Task {
 	        System.err.println("Data inválida: " + dateStr);
 	    }
 	    
-	    return LocalDateTime.of(1, 1, 1, 0, 0); // Retorna a data mínima padrão
+	    return LocalDateTime.of(1, 1, 1, 0, 0);
 	}
 
 	  

@@ -18,11 +18,9 @@ public class TaskManager {
 		listTask = new ArrayList<Task>();
 		File file = new File("tasks.txt");
 		 try {
-	            if (file.exists()) {
-	                // Se o arquivo existe, leia as tarefas
+	            if (file.exists()) { 
 	                initializeTasks(file);
 	            } else {
-	                // Se o arquivo não existe, cria um novo
 	                file.createNewFile();
 	                System.out.println("Arquivo 'tasks.txt' criado com sucesso.");
 	            }
@@ -114,9 +112,9 @@ public class TaskManager {
 		int id = s.nextInt();
 		Task task = new Task();
 		for (Task tk : listTask) {
-            if (tk.getId() == id) { // Compara o ID atual com o ID desejado
-                task=tk;
-                break;// Retorna a tarefa encontrada
+            if (tk.getId() == id) {      
+            	task=tk;
+                break;
             }
         }
 		boolean exit = false;
@@ -164,12 +162,12 @@ public class TaskManager {
 		
 		for (int i = 0; i < listTask.size(); i++) {
 		    Task tk = listTask.get(i);
-		    if (tk.getId() == id) { // Compara o ID atual com o ID desejado
+		    if (tk.getId() == id) { 
 		    	listTask.remove(i);
 		    	System.out.println("----------------------------------------------------------\n");
 		    	System.out.println("id: "+tk.getId()+"  Title: "+tk.getTitle()+" foi removido.\n");
 		    	System.out.println("----------------------------------------------------------\n");
-                break;// Retorna a tarefa encontrada
+                break;
             }else if(i-1 == listTask.size()) {
             	System.out.println("----------------------------------------------------------\n");
 		    	System.out.println("Id da task não encontrado");
