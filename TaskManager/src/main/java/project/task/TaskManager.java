@@ -75,10 +75,9 @@ public class TaskManager {
 		System.out.println("----------------------------------------------------------\n");
 		System.out.println("Criando tarefa\n");
 		System.out.println("Digite o nome da task\n");
-		String title = s.next();
+		String title = s.nextLine();
 		System.out.println("Digite a descrição da task\n");
-		String description = s.next();
-		idCounter++;
+		String description = s.nextLine();
 		int id = idCounter;
 		System.out.println("digite a data de vencimento (dd/mm/yyyy):\n");
 		String dueDateStr = s.next();
@@ -86,6 +85,7 @@ public class TaskManager {
 		LocalDateTime dueDate = localDate.atStartOfDay();
 		System.out.println("----------------------------------------------------------\n");
 		task = new Task(id, title, description, dueDate);
+		idCounter++;
 		listTask.add(task);
 		
 	}
